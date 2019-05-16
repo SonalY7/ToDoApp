@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Your's ToDo</title>
+        <link href="/public/css/style.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <h1>ToDo ~ List</h1>
+        <div class='todo-form'>
+            <form action="/newtoDo", method="POST">
+                <input type="text" name="item" placeholder="Enter todo stuff.." class='input-box'>
+                <span><button type="submit" class='bttn'>Write</button></span>
+            </form>
+        </div>
+        <div class='todo-list'>
+            <ul>
+                <% for(let i = 0; i< todoList.length; i++){ %>
+                    <li><%= todoList[i].text %> 
+                    </li>
+                    <br>
+                <% } %>
+            </ul>
+        </div>
+    </body>
+</html>

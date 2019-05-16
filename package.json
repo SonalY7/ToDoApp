@@ -1,0 +1,17 @@
+{
+  "name": "toDo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Sonal Yadav",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "pg": "^7.11.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^5.8.6",
+    "sequelize-cli": "^5.4.0"
+  }
+}
