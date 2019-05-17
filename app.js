@@ -10,7 +10,6 @@ app.use('/public',express.static('public'));
 
 // fetching the todo-list from db.
 app.get("/", (req, res) => {
-  
   todo.findAll({raw: true}).then(todos => { 
     res.render("base.ejs", { todoList: todos});
   });
@@ -20,8 +19,8 @@ app.get("/", (req, res) => {
 app.post("/newtoDO", (req, res) => {
   todo.create({text: req.body.item}).then(() => {
     console.log(`Todo item added to database.`)
+    res.redirect("/");
   });
-  res.redirect("/");
 });
 
 // for undefined urls.
