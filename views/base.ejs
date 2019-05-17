@@ -7,7 +7,7 @@
     <body>
         <h1>ToDo ~ List</h1>
         <div class='todo-form'>
-            <form action="/newtoDo", method="POST">
+            <form action="/todo", method="POST">
                 <input type="text" name="item" placeholder="Enter todo stuff.." class='input-box'>
                 <span><button type="submit" class='bttn'>Write</button></span>
             </form>
@@ -15,7 +15,7 @@
         <div class='todo-list'>
             <ul>
                 <% for(let i = 0; i< todoList.length; i++){ %>
-                    <li><%= todoList[i].text %> 
+                    <li><%= todoList[i].text %>
                     </li>
                     <br>
                 <% } %>
