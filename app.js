@@ -4,52 +4,51 @@ const port = 8000;
 const bodyParser = require("body-parser");
 const todo = require("./sequelize");
 
-// app.set("view engine", "ejs");
-// app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use("/public", express.static("public"));
 
 // retrieve
-app.get("/todo", (req, res) => {
-  todo.findAll({ raw: true }).then(todos => {
-    res.send(todos);
-  });
+app.get("/todo", async (req, res) => {
+  let todoList = await todo.findAll({ raw: true });
+  res.send(todoList);
+});
+
+//retrieve one
+app.get("/todo/:id", async (req, res) => {
+  let todoOne = await todo.findOne(
+    { where: { id: req.params.id } },
+    { raw: true }
+  );
+  res.send(todoOne);
 });
 
 // create
-app.post("/todo", (req, res) => {
-  todo.create({ text: req.body.text }).then(() => {
-    res.redirect("/todo");
-  });
+app.post("/todo", async (req, res) => {
+  let temp = await todo.create({ text: req.body.text });
+  res.redirect("/todo");
 });
 
 //update
-app.put("/todo/:id", (req, res) => {
-  todo
-    .update(
-      {
-        text: req.body.text
-      },
-      {
-        where: { id: req.params.id }
-      }
-    )
-    .then(() => {
-      res.redirect("/todo");
-    });
+app.put("/todo/:id", async (req, res) => {
+  let temp = await todo.update(
+    {
+      text: req.body.text
+    },
+    {
+      where: { id: req.params.id }
+    }
+  );
+  res.redirect("/todo");
 });
 
 // delete
-app.delete("/todo/:id", (req, res) => {
-  todo
-    .destroy({
-      where: {
-        id: req.params.id
-      }
-    })
-    .then(() => {
-      res.redirect("/todo");
-    });
+app.delete("/todo/:id", async (req, res) => {
+  let temp = await todo.destroy({
+    where: {
+      id: req.params.id
+    }
+  });
+  res.redirect("/todo");
 });
 
 // for undefined urls.
