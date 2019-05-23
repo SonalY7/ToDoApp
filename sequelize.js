@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const todoModel = require('./models/todo');
+const userModel = require('./models/user')
 
 const sequelize = new Sequelize('todo_development', 'todo_admint', 'postgres', 
                   {host: 'localhost',
@@ -13,11 +14,11 @@ const sequelize = new Sequelize('todo_development', 'todo_admint', 'postgres',
                   });
 
 const todo = todoModel(sequelize, Sequelize);
+const user = userModel(sequelize, Sequelize);
 // {force: true}
 sequelize.sync()
  .then(() => {
-    //  console.log(`Database with tables created!`);
+    //   console.log(`Database with tables created!`);
  });
-
- module.exports = todo;
+module.exports = {todo, user};
 

@@ -7,11 +7,18 @@
   "private": true,
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.1",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
     "pg": "^7.11.0",
     "pg-hstore": "^2.3.2",
     "sequelize": "^5.8.6",
     "sequelize-cli": "^5.4.0"
-  }
+  },
+  "scripts": {
+    "start": "node app.js"
+}
 }
